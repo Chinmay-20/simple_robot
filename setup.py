@@ -25,7 +25,8 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'robot_controller = simple_robot.robot_controller:main'
+            'robot_controller = simple_robot.robot_controller:main',
+            'teleop_controller = simple_robot.teleop_controller:main'
         ],
     },
 )

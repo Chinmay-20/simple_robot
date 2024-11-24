@@ -33,16 +33,7 @@ def generate_launch_description():
         output='screen'
     )
     
-    # Launch the robot controller
-    controller = Node(
-        package='simple_robot',
-        executable='robot_controller',
-        name='robot_controller',
-        output='screen'
-    )
-    
     return LaunchDescription([
         gazebo,
-        spawn_robot,
-        controller
+        spawn_robot
     ])
