@@ -11,8 +11,9 @@ def generate_launch_description():
     # Get package directory
     pkg_share = FindPackageShare('simple_robot').find('simple_robot')
     urdf_path = os.path.join(pkg_share, 'urdf', 'simple_robot.urdf')
+    world_path = os.path.join(pkg_share, 'worlds', 'obstacle_world.world')
     
-    # Launch Gazebo
+    # Launch Gazebo with our world
     gazebo = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([
             PathJoinSubstitution([
@@ -20,7 +21,8 @@ def generate_launch_description():
                 'launch',
                 'gazebo.launch.py'
             ])
-        ])
+        ]),
+        launch_arguments={'world': world_path}.items()
     )
     
     # Spawn the robot
