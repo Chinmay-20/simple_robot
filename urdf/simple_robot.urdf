@@ -86,21 +86,22 @@
   </gazebo>
 
   <!-- Differential Drive Plugin -->
-  <gazebo>
-    <plugin name="diff_drive" filename="libgazebo_ros_diff_drive.so">
-      <left_joint>left_wheel_joint</left_joint>
-      <right_joint>right_wheel_joint</right_joint>
-      <wheel_separation>0.3</wheel_separation>
-      <wheel_diameter>0.1</wheel_diameter>
-      <max_wheel_torque>20</max_wheel_torque>
-      <max_wheel_acceleration>1.0</max_wheel_acceleration>
-      <odometry_frame>odom</odometry_frame>
-      <robot_base_frame>base_link</robot_base_frame>
-      <publish_odom>true</publish_odom>
-      <publish_wheel_tf>true</publish_wheel_tf>
-      <publish_wheel_joint_state>true</publish_wheel_joint_state>
-    </plugin>
-  </gazebo>
+   <gazebo>
+        <plugin name="diff_drive" filename="libgazebo_ros_diff_drive.so">
+            <left_joint>left_wheel_joint</left_joint>
+            <right_joint>right_wheel_joint</right_joint>
+            <wheel_separation>0.3</wheel_separation>
+            <wheel_diameter>0.1</wheel_diameter>
+            <max_wheel_torque>20</max_wheel_torque>
+            <max_wheel_acceleration>1.0</max_wheel_acceleration>
+            <publish_rate>50</publish_rate>
+            <odometry_frame>odom</odometry_frame>
+            <robot_base_frame>base_link</robot_base_frame>
+            <publish_odom>true</publish_odom>
+            <publish_wheel_tf>true</publish_wheel_tf>
+            <publish_wheel_joint_state>true</publish_wheel_joint_state>
+        </plugin>
+    </gazebo>
 
   <!-- Wheels -->
   <link name="left_wheel">
@@ -144,16 +145,18 @@
   </link>
 
   <joint name="left_wheel_joint" type="continuous">
-    <parent link="base_link"/>
-    <child link="left_wheel"/>
-    <origin xyz="-0.1 0.15 0" rpy="-1.5707 0 0"/>
-    <axis xyz="0 0 1"/>
-  </joint>
+        <parent link="base_link"/>
+        <child link="left_wheel"/>
+        <origin xyz="-0.1 0.15 0" rpy="-1.5707 0 0"/>
+        <axis xyz="0 0 1"/>
+        <dynamics damping="0.1" friction="0.1"/> <!-- Added damping and friction -->
+    </joint>
 
-  <joint name="right_wheel_joint" type="continuous">
-    <parent link="base_link"/>
-    <child link="right_wheel"/>
-    <origin xyz="-0.1 -0.15 0" rpy="-1.5707 0 0"/>
-    <axis xyz="0 0 1"/>
-  </joint>
+    <joint name="right_wheel_joint" type="continuous">
+        <parent link="base_link"/>
+        <child link="right_wheel"/>
+        <origin xyz="-0.1 -0.15 0" rpy="-1.5707 0 0"/>
+        <axis xyz="0 0 1"/>
+        <dynamics damping="0.1" friction="0.1"/> <!-- Added damping and friction -->
+    </joint>
 </robot>

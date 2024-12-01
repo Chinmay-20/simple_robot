@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<sdf version="1.6">
+  <world name="room_world">
+    <!-- Include default sun for lighting -->
+    <include>
+      <uri>model://sun</uri>
+    </include>
+
+    <!-- Floor (5m x 5m) -->
+    <model name="floor">
+      <static>true</static>
+      <pose>0 0 0 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>5 5 0.1</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>5 5 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 1 1 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Add invisible walls to prevent robot from falling -->
+    <model name="boundary_walls">
+      <static>true</static>
+      <!-- Front wall -->
+      <link name="front_wall">
+        <pose>2.5 0 0.25 0 0 0</pose>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>0.1 5 0.5</size>
+            </box>
+          </geometry>
+        </collision>
+      </link>
+      <!-- Back wall -->
+      <link name="back_wall">
+        <pose>-2.5 0 0.25 0 0 0</pose>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>0.1 5 0.5</size>
+            </box>
+          </geometry>
+        </collision>
+      </link>
+      <!-- Left wall -->
+      <link name="left_wall">
+        <pose>0 2.5 0.25 0 0 0</pose>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>5 0.1 0.5</size>
+            </box>
+          </geometry>
+        </collision>
+      </link>
+      <!-- Right wall -->
+      <link name="right_wall">
+        <pose>0 -2.5 0.25 0 0 0</pose>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>5 0.1 0.5</size>
+            </box>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+  </world>
+</sdf>

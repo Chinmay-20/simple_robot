@@ -11,8 +11,8 @@ class TeleopController(Node):
         self.publisher = self.create_publisher(Twist, '/cmd_vel', 10)
         
         # Movement settings
-        self.linear_speed = 0.5  # meters per second
-        self.angular_speed = 1.0  # radians per second
+        self.linear_speed = 1.0  # meters per second
+        self.angular_speed = 2.5  # radians per second
         
         print("""
 Control Your Robot!
