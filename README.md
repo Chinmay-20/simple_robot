@@ -33,3 +33,12 @@ Add a LaserScan display
 Set the topic to "/scan"
 
 You should see the Lidar data as points around the robot
+
+
+on commit "added floor and changed velocities."
+Potential Improvements:
+
+Add collision detection to the robot controller to prevent wall impacts
+Implement smooth acceleration/deceleration in the teleop controller
+Add visualization markers for the boundary walls
+Consider adding transforms for odometry visualization
